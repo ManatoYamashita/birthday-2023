@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <!-- seo -->
+    <meta name="description" content="2023「#山下マナト生誕祭」このサイトは山下マナトの21歳の誕生日を自分で祝うために書いたサイトです。拳で!!!!">
+    <meta name="keywords" content="山下マナト,マナト,21歳,tcu,東京都市大学,ヤマシタマナト,山下マナトの憂鬱">
+    <meta name="author" content="Yamashita Manato(https://twitter.com/YamashitaMa_tcu)">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@YamashitaMa_tcu">
+    <meta name="twitter:creator" content="@YamashitaMa_tcu">
+    <meta property="og:url" content="https://hpb-2023.manapuraza.com/">
+    <meta property="og:title" content="Yamashita Manato Birthday 2023">
+    <meta property="og:description" content="2023「#山下マナト生誕祭」このサイトは山下マナトの21歳の誕生日を自分で祝うために書いたサイトです。拳で!!!!">
+    <meta property="og:image" content="./img/sample.png">
+    <meta property="og:site_name" content="Yamashita Manato Birthday 2023">
+    <meta property="og:locale" content="ja_JP">
+    <meta property="og:type" content="website">
+    <link rel="apple-touch-icon" sizes="180x180" href="./img/sample.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./img/sample.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./img/sample.png">
+    <link rel="manifest" href="./img/sample.png">
+    <link rel="mask-icon" href="./img/sample.png" color="#5bbad5">
+    <link rel="shortcut icon" href="./img/sample.png">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="msapplication-config" content="./img/sample.png">
+    <meta name="theme-color" content="#ffffff">
+    <!-- <script src="./main.js"></script> 意味のないJSファイル-->
+    <!-- Font install (VDL-logoJrBlack) -->
+    <script>
+        (function(d) {
+          let config = {
+            kitId: 'xku0nxz',
+            scriptTimeout: 3000,
+            async: true
+          },
+          h=d.documentElement,t=setTimeout(function(){h.className=h.className.replace(/\bwf-loading\b/g,"")+" wf-inactive";},config.scriptTimeout),tk=d.createElement("script"),f=false,s=d.getElementsByTagName("script")[0],a;h.className+=" wf-loading";tk.src='https://use.typekit.net/'+config.kitId+'.js';tk.async=true;tk.onload=tk.onreadystatechange=function(){a=this.readyState;if(f||a&&a!="complete"&&a!="loaded")return;f=true;clearTimeout(t);try{Typekit.load(config)}catch(e){}};s.parentNode.insertBefore(tk,s)
+        })(document);
+    </script>
+    <title>YM Birthday 2023</title>
+</head>
+<body>
+    <main style="overflow: hidden;" id="main" class="main">
+        <div class="layer back">
+            <video id="myvideo" autoplay muted loop>
+                <source src="./img/twitter_balloon.mp4" type="video/mp4">
+                Your browser does not support the video tag（something error occured）.
+            </video>
+            <img id="backgroundImage" src="./img/backgroundimage.gif" alt="back" style="display: none;">
+        </div>
+        <div class="layer type-mask"><img id="mask-img" src="./img/20230417.png" alt="mask"></div>
+        <div class="layer myGifContainer" alt="gif-image" id="myGifContainer"><img src="#" id="kobushi" alt="kobushi-img"></div>
+        <div class="layer button">
+            <p style="font-size: small; color: rgb(175, 175, 175);" id="message"></p>
+            <button id="btn" class="btn" onclick="handleClick()">
+                Press the button!<br>
+            </button>
+        </div>
+        <div class="layer top" style="display: none;">
+            <div id="content"></div>
+        </div>
+    </main>
+</body>
+<script>
+    // イベントリスナーを設定
+    const button = document.querySelector('.btn');
+    const mask = document.querySelector('.type-mask');
+    let voice, voice2, bgm = "";
+    if (window.innerWidth < 450) {
+        button.style.display = "none";
+        const me = document.getElementById("message");
+        me.innerHTML = "※画面を横にしてください。（横画面に変更したらリロードしてください。）";
+    }
+    else {
+        button.style.display = "block";
+        const me = document.getElementById("message");
+        me.innerHTML = "※音が流れます。(スマートフォンは正しく動作しない可能性があります。)";
+    }
+    function handleClick() {
+        button.style.transition = 'opacity 0.5s ease-out';
+        button.style.opacity = '0';
+        button.addEventListener('transitionend', handleTransitionEnd);
+        const me = document.getElementById("message");
+        me.remove();
+    }
+
+    function handleTransitionEnd() {
+        button.remove();
+        mask.style.transition = 'transform 1s cubic-bezier(.76,-0.01,.82,.35)';
+        mask.style.transform = 'translateX(-100%)';
+        mask.addEventListener('transitionend', handleTransitionEnd2);
+    }
+    function handleTransitionEnd2() {
+        mask.remove();
+        // ボタンが押されてから3秒後にgif画像を表示
+        setTimeout(function() {
+            // GIF画像を画面いっぱいに表示する
+            const myGifContainer = document.getElementById("myGifContainer");
+            myGifContainer.style.backgroundImage = "url('./img/kobushi.gif')";
+            myGifContainer.style.display = "block";
+        // ランダムで音声を再生（1~2）
+        const random = Math.floor(Math.random() * 3);
+        if (random === 0) {
+            voice2 = "山下マナト(通常)";
+            const audio = new Audio('./se/ageof21.m4a');
+            audio.play();
+        } else if (random === 1) {
+            voice2 = "山下マナト(本気)";
+            const audio = new Audio('./se/ageof21_.m4a');
+            audio.play();
+        } else {
+            voice2 = "本家の人";
+            const audio = new Audio('./se/21.mp3');
+            audio.play();
+        }
+        }, 3000);
+        setTimeout(function() {
+            myGifContainer.style.backgroundImage = "url('./img/kobushied.png')";
+            // videoのsrcを消す
+            const myvideo = document.getElementById("myvideo");
+            myvideo.src = "";
+            // imgタグのdiscplayを表示する
+            const img = document.getElementById("backgroundImage");
+            img.style.display = "block";
+            img.style.width = "100%";
+            img.style.height = "100%";
+            // divタグのdisplayを表示する
+            const top = document.querySelector('.top');
+            top.style.display = "block";
+            top.style.transition = 'opacity 1s ease-out';
+            top.style.opacity = '1';
+            top.style.width = "100%";
+
+            const random = Math.floor(Math.random() * 4);
+            if (random === 0) {
+                bgm = "Who made the anemone（げんたろう）"
+                const audio = new Audio('./se/1_who_made_the_anemone.mp3');
+                audio.play();
+            } else if (random === 1) {
+                bgm = "Demo Epic（杉山さん）"
+                const audio = new Audio('./se/2_Demo_Epic.mp3');
+                audio.play();
+            } else if (random === 2) {
+                bgm = "3_The beat for hiphop（さりー）"
+                const audio = new Audio('./se/3_The_beat_for_hiphop.mp3');
+                audio.play();
+            }
+            else {
+                bgm = "melancholy_book_advanced（DJ ARASHI）"
+                const audio = new Audio('./se/4_melancholy_book_advanced.m4a');
+                audio.play();
+            }
+
+            const content = document.getElementById('content');
+            content.innerHTML = `
+                <h1>Happy Birthday to Me!</h1>
+                <h2>21歳、拳で。</h2>
+                <p>
+                    <ol>
+                        <li> Web/Animation: Manato Yamashita</li>
+                        <li> Voice1: ${voice}</li>
+                        <li> Voice2: ${voice2}</li>
+                        <li> Bgm: ${bgm}</li>
+                    </ol>
+                    <ul>
+                        <li>©︎ 2023 <a href="https://tcu-dc.net/">デジタルコンテンツ研究会</a> / 山下マナト</li>
+                        <li><a href="https://bento.me/ym/">https://bento.me/ym/</a></li>
+                    </ul>
+                </p>
+            `;
+        }, 5900);
+    }
+
+    function playSound() {
+        // ランダムで音声を再生（1~2）
+        const random = Math.floor(Math.random() * 3);
+        if (random === 0) {
+            voice = "でじこんちゃん ver3.0 JP";
+            const audio = new Audio('./se/hpb-jp.mp3');
+            audio.play();
+        } else {
+            voice = "でじこんちゃん ver3.0 EN";
+            const audio = new Audio('./se/hpb-en.mp3');
+            audio.play();
+        }
+    };
+    const playButton = document.getElementById('btn');
+    playButton.addEventListener('click', playSound);
+</script>
+</html>
